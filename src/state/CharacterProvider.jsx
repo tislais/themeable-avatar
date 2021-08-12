@@ -1,9 +1,14 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { fetchAvatarCharacters } from '../services/avatarApi';
 
 const CharacterContext = createContext();
 
 export const CharacterProvider = ({ children }) => {
   const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    fetchAvatarCharacters().then.apply(setCharacters);
+  }, []);
 
   return (
     <CharacterContext.Provider value={{ characters }}>
