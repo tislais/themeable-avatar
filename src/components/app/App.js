@@ -1,9 +1,8 @@
+import CharacterList from "../characters/CharacterList";
 
 function App() {
   return (
-    <div>
-      hi
-    </div>
+    <CharacterList />
   );
 }
 

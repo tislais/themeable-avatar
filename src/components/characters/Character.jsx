@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Character = () => {
- <h1>Character</h1>
+const Character = ({ name, image }) => {
+  return (
+    <figure>
+      <img src={image} alt={name} />
+      <figcaption>{name}</figcaption>
+    </figure>
+  )
 };
 
 Character.propTypes = {
