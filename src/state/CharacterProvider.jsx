@@ -5,6 +5,7 @@ const CharacterContext = createContext();
 
 export const CharacterProvider = ({ children }) => {
   const [characters, setCharacters] = useState([]);
+  const [selectedTheme, setSelectedTheme] = useState('light');
 
   useEffect(() => {
     fetchAvatarCharacters().then(setCharacters);
@@ -20,4 +21,9 @@ export const CharacterProvider = ({ children }) => {
 export const useCharacters = () => {
   const { characters } = useContext(CharacterContext);
   return characters;
+}
+
+export const useSetSelectedTheme = () => {
+  const { setSelectedTheme } = useContext(CharacterContext);
+  return setSelectedTheme;
 }
