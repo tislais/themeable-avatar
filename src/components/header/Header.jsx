@@ -5,22 +5,46 @@ const Header = () => {
   const setSelectedTheme = useSetSelectedTheme();
   const selectedTheme = useSelectedTheme();
 
-  const handleChange = ({ target }) => setSelectedTheme(target.value);
+  const handleChange = ({ target }) => {
+    if(target.checked) {
+      setSelectedTheme('dark');
+    } else setSelectedTheme('light');
+    console.log(selectedTheme)
+  };
 
   return (
-    <>
-      <h1>Avatar Characters</h1>
+    <header className={header}>
+      <h1 className={h1}>Avatar Characters</h1>
+
       <label>
-        <input type="radio" name="theme" value="light" onChange={handleChange} />
-        Light
+        <div className="relative">
+          <input type="checkbox" onChange={handleChange}></input>
+        </div>
       </label>
-      <label> 
-        <input type="radio" name="theme" value="dark" onChange={handleChange} />
-        Dark
-      </label>
-      <p>Theme: {selectedTheme}</p>
-    </>
+
+      <p>Dark Mode: {selectedTheme}</p>
+    </header>
   )
 };
+
+const header = `
+  col-span-12 
+  bg-gradient-to-r 
+  from-blue-400 
+  via-yellow-100
+  to-pink-300 
+  p-4
+  flex
+  border-b-4
+  border-black
+  border-opacity-10
+  gap-4
+`;
+
+const h1 = `
+  text-2xl
+  font-light
+  text-white
+`;
 
 export default Header;

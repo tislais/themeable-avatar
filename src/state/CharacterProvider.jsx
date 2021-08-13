@@ -8,7 +8,7 @@ export const CharacterProvider = ({ children }) => {
   const [selectedTheme, setSelectedTheme] = useState('light');
 
   useEffect(() => {
-    fetchAvatarCharacters().then(setCharacters).then(setSelectedTheme);
+    fetchAvatarCharacters().then(setCharacters);
   }, []);
 
   return (
