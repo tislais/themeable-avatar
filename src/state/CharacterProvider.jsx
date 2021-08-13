@@ -7,7 +7,7 @@ export const CharacterProvider = ({ children }) => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
-    fetchAvatarCharacters().then.apply(setCharacters);
+    fetchAvatarCharacters().then(setCharacters);
   }, []);
 
   return (
