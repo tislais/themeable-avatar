@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { fetchAvatarCharacters, fetchFuturamaCharacters } from '../services/characterApis';
+import { fetchAvatarCharacters, fetchFuturamaCharacters, fetchHeyArnoldCharacters } from '../services/characterApis';
 
 const CharacterContext = createContext();
 
@@ -10,7 +10,8 @@ export const CharacterProvider = ({ children }) => {
 
   const apiMap = {
     avatar: fetchAvatarCharacters,
-    futurama: fetchFuturamaCharacters
+    futurama: fetchFuturamaCharacters,
+    heyArnold: fetchHeyArnoldCharacters
   }
 
   useEffect(() => {

@@ -33,6 +33,7 @@ const Header = () => {
           <option>Choose API...</option>
           <option value="avatar">Avatar API</option>
           <option value="futurama">Futurama API</option>
+          <option value="heyArnold">Hey Arnold API</option>
         </select>
       </div>
       <h1 className={ 
