@@ -1,10 +1,11 @@
 import React from 'react';
-import { useSelectedTheme, useSetSelectedApi, useSetSelectedTheme } from '../../state/CharacterProvider';
+import { useSelectedTheme, useSetSelectedApi, useSetSelectedTheme, useAvailableApis } from '../../state/CharacterProvider';
 
 const Header = () => {
   const setSelectedTheme = useSetSelectedTheme();
   const selectedTheme = useSelectedTheme();
   const setSelectedApi = useSetSelectedApi();
+  const availableApis = useAvailableApis();
 
   const handleInputChange = ({ target }) => {
     if(target.checked) {
@@ -31,9 +32,11 @@ const Header = () => {
             : select + darkSelect
           }>
           <option>Choose API...</option>
-          <option value="avatar">Avatar API</option>
-          <option value="futurama">Futurama API</option>
-          <option value="heyArnold">Hey Arnold API</option>
+
+          {availableApis.map((api) => (
+            <option key={api} value={api}>{api}</option>
+          ))}
+          
         </select>
       </div>
       <h1 className={ 

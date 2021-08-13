@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { fetchAvatarCharacters, fetchFuturamaCharacters, fetchHeyArnoldCharacters } from '../services/characterApis';
+import { fetchAvatarCharacters, fetchFuturamaCharacters, fetchHeyArnoldCharacters, fetchRickAndMortyCharacters } from '../services/characterApis';
 
 const CharacterContext = createContext();
 
@@ -11,7 +11,8 @@ export const CharacterProvider = ({ children }) => {
   const apiMap = {
     avatar: fetchAvatarCharacters,
     futurama: fetchFuturamaCharacters,
-    heyArnold: fetchHeyArnoldCharacters
+    heyArnold: fetchHeyArnoldCharacters,
+    rickAndMorty: fetchRickAndMortyCharacters
   }
 
   useEffect(() => {
@@ -24,7 +25,8 @@ export const CharacterProvider = ({ children }) => {
       characters, 
       setSelectedTheme, 
       selectedTheme,
-      setSelectedApi
+      setSelectedApi,
+      apiMap
     }}>
       {children}
     </CharacterContext.Provider>
@@ -49,4 +51,10 @@ export const useSetSelectedTheme = () => {
 export const useSetSelectedApi = () => {
   const { setSelectedApi } = useContext(CharacterContext);
   return setSelectedApi;
+};
+
+export const useAvailableApis = () => {
+  const { apiMap } = useContext(CharacterContext);
+  console.log(apiMap);
+  return Object.keys(apiMap);
 };
