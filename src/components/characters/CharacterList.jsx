@@ -30,6 +30,7 @@ const CharacterList = () => {
 
 const wrap = `
   transition duration-300 ease-in-out
+  pb-12
 `;
 
 const darkWrap = `

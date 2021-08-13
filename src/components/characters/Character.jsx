@@ -63,13 +63,14 @@ const lightFigure = `
 `;
 
 const caption = `
+  w-60
   text-2xl
   font-light
-  w-full
   my-2
   p-2
   text-center
   transition duration-300 ease-in-out
+  truncate
 `;
 
 const lightCaption = `
