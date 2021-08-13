@@ -1,15 +1,21 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { fetchAvatarCharacters } from '../services/avatarApi';
+import { fetchAvatarCharacters, fetchFuturamaCharacters } from '../services/characterApis';
 
 const CharacterContext = createContext();
 
 export const CharacterProvider = ({ children }) => {
   const [characters, setCharacters] = useState([]);
   const [selectedTheme, setSelectedTheme] = useState('light');
+  const [selectedApi, setSelectedApi] = useState('futurama');
+
+  const apiMap = {
+    airbender: fetchAvatarCharacters,
+    futurama: fetchFuturamaCharacters
+  }
 
   useEffect(() => {
-    fetchAvatarCharacters().then(setCharacters);
-  }, []);
+    apiMap[selectedApi]().then(setCharacters);
+  }, [selectedApi]);
 
   return (
     <CharacterContext.Provider value={{ characters, setSelectedTheme, selectedTheme }}>
@@ -31,4 +37,9 @@ export const useCharacters = () => {
 export const useSetSelectedTheme = () => {
   const { setSelectedTheme } = useContext(CharacterContext);
   return setSelectedTheme;
+};
+
+export const useSetSelectedApi = () => {
+  const { setSelectedApi } = useContext(CharacterContext);
+  return setSelectedApi;
 };
