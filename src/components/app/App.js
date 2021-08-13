@@ -1,8 +1,12 @@
 import CharacterList from "../characters/CharacterList";
+import Header from "../header/Header";
 
 function App() {
   return (
-    <CharacterList />
+    <>
+      <Header />
+      <CharacterList />
+    </>
   );
 }
 
