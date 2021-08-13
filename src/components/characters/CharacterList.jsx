@@ -7,7 +7,12 @@ const CharacterList = () => {
   const selectedTheme = useSelectedTheme();
 
   const characterElements = characters.map((character) => (
-    <li key={character.name} className={li}>
+    <li key={character.name} 
+      className={
+        selectedTheme === 'light'
+          ? li + lightLi
+          : li + darkLi
+      }>
       <Character {...character} />
     </li>
   ));
@@ -24,10 +29,11 @@ const CharacterList = () => {
 };
 
 const wrap = `
+  transition duration-300 ease-in-out
 `;
 
 const darkWrap = `
-  bg-gray-800
+  bg-gray-900
 `;
 
 const lightWrap = `
@@ -48,13 +54,21 @@ const ul = `
 
 const li = `
   p-4
-  bg-white
-  bg-opacity-50
   rounded-xl
   shadow
   transform
   transition duration-300 ease-in-out
   hover:scale-105
+`;
+
+const lightLi = `
+  bg-white
+  bg-opacity-50
+`;
+
+const darkLi = `
+  bg-gray-800
+  bg-opacity-50
 `;
 
 

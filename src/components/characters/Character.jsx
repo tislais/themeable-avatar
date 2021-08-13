@@ -6,7 +6,11 @@ const Character = ({ name, image }) => {
   const selectedTheme = useSelectedTheme();
 
   return (
-    <figure className={figure}>
+    <figure className={
+      selectedTheme === 'light'
+        ? figure + lightFigure
+        : figure + darkFigure
+    }>
       <img src={image} alt={name} className={
         selectedTheme === 'light'
           ? img + lightImg
@@ -26,15 +30,15 @@ const img = `
   h-48
   rounded-lg
   object-cover
-
+  transition duration-300 ease-in-out
 `;
 
 const lightImg = `
-  border-gray-200
 `;
 
 const darkImg = `
-  border-gray700
+  filter
+  brightness-75
 `;
 
 const figure = `
@@ -43,10 +47,19 @@ const figure = `
   items-center
   gap-4
   border
-  border-gray-200
-  bg-white
   p-4
   rounded-lg
+  transition duration-300 ease-in-out
+`;
+
+const darkFigure = `
+  bg-gray-800
+  border-opacity-0
+`;
+
+const lightFigure = `
+  bg-white
+  border-gray-200
 `;
 
 const caption = `
@@ -56,6 +69,7 @@ const caption = `
   my-2
   p-2
   text-center
+  transition duration-300 ease-in-out
 `;
 
 const lightCaption = `
