@@ -1,16 +1,21 @@
 import React from 'react';
-import { useSelectedTheme, useSetSelectedTheme } from '../../state/CharacterProvider';
+import { useSelectedTheme, useSetSelectedApi, useSetSelectedTheme } from '../../state/CharacterProvider';
 
 const Header = () => {
   const setSelectedTheme = useSetSelectedTheme();
   const selectedTheme = useSelectedTheme();
+  const setSelectedApi = useSetSelectedApi();
 
-  const handleChange = ({ target }) => {
+  const handleInputChange = ({ target }) => {
     if(target.checked) {
       setSelectedTheme('dark');
     } else setSelectedTheme('light');
-    console.log(selectedTheme)
   };
+  
+  const handleSelectChange = ({ target }) => {
+    console.log(target.value);
+    setSelectedApi(target.value);
+  }
 
   return (
     <header className={ 
@@ -18,16 +23,16 @@ const Header = () => {
         ? header + lightHeader
         : header + darkHeader
       }>
-      <div class="relative inline-flex">
-        <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-        <select class={ 
+      <div className="relative inline-flex">
+        <svg className="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
+        <select onChange={handleSelectChange} className={ 
           selectedTheme === 'light' 
             ? select + lightSelect
             : select + darkSelect
           }>
           <option>Choose API...</option>
-          <option>Avatar API</option>
-          <option>Open Pinball Database</option>
+          <option value="avatar">Avatar API</option>
+          <option value="futurama">Futurama API</option>
         </select>
       </div>
       <h1 className={ 
@@ -35,16 +40,18 @@ const Header = () => {
           ? h1 + lightH1
           : h1 + darkH1
         }>Avatar Characters</h1>
+
       <div className="flex items-center justify-center">
         <label className="flex items-center cursor-pointer flex-col">
           <div className="relative flex items-center">
-            <input type="checkbox" onChange={handleChange} className="sr-only" />
+            <input type="checkbox" onChange={handleInputChange} className="sr-only" />
             <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
             <div className="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
             <div className={selectedTheme === 'light' ? label + lightLabel : label + darkLabel}>Dark Mode</div>
           </div>
         </label>
       </div>
+
     </header>
   )
 };

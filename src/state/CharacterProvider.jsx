@@ -9,16 +9,22 @@ export const CharacterProvider = ({ children }) => {
   const [selectedApi, setSelectedApi] = useState('futurama');
 
   const apiMap = {
-    airbender: fetchAvatarCharacters,
+    avatar: fetchAvatarCharacters,
     futurama: fetchFuturamaCharacters
   }
 
   useEffect(() => {
+    console.log(selectedApi);
     apiMap[selectedApi]().then(setCharacters);
   }, [selectedApi]);
 
   return (
-    <CharacterContext.Provider value={{ characters, setSelectedTheme, selectedTheme }}>
+    <CharacterContext.Provider value={{ 
+      characters, 
+      setSelectedTheme, 
+      selectedTheme,
+      setSelectedApi
+    }}>
       {children}
     </CharacterContext.Provider>
   );
