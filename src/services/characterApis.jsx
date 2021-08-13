@@ -28,8 +28,8 @@ export const fetchHeyArnoldCharacters = async () => {
 
 export const fetchRickAndMortyCharacters = async () => {
   const res = await fetch('https://rickandmortyapi.com/api/character/');
-  const json = await res.results.json();
-  return json.map(({ name, image }) => ({
+  const json = await res.json();
+  return json.results.map(({ name, image }) => ({
     name, image
   }));
 };
