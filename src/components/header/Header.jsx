@@ -39,12 +39,15 @@ const header = `
   border-black
   border-opacity-10
   gap-4
+  shadow-md
 `;
 
 const h1 = `
   text-2xl
   font-light
   text-white
+  filter
+  drop-shadow-sm
 `;
 
 export default Header;
