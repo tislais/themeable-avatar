@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
+import { CharacterProvider } from './state/CharacterProvider';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <CharacterProvider>
     <App />
-  </React.StrictMode>,
+  </CharacterProvider>,
   document.getElementById('root')
 );
 
