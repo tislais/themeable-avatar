@@ -14,7 +14,6 @@ const Header = () => {
   };
   
   const handleSelectChange = ({ target }) => {
-    console.log(target.value);
     setSelectedApi(target.value);
   }
 
@@ -44,7 +43,7 @@ const Header = () => {
           selectedTheme === 'light' 
             ? h1 + lightH1
             : h1 + darkH1
-          }>Avatar Characters</h1>
+          }>API Character Lister</h1>
 
         <div className="flex items-center justify-center">
           <label className="flex items-center cursor-pointer flex-col">

@@ -16,7 +16,6 @@ export const CharacterProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    console.log(selectedApi);
     apiMap[selectedApi]().then(setCharacters);
   }, [selectedApi]);
 
@@ -55,6 +54,5 @@ export const useSetSelectedApi = () => {
 
 export const useAvailableApis = () => {
   const { apiMap } = useContext(CharacterContext);
-  console.log(apiMap);
   return Object.keys(apiMap);
 };
